@@ -32,15 +32,16 @@ services:
       - 9300:9300
     networks: ['stack']
 
-  # kibana:
-  #   image: docker.elastic.co/kibana/kibana:${TAG}
-  #   container_name: kibana
-  #   environment:
-  #     - ELASTICSEARCH_USERNAME=kibana
-  #     - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
-  #   ports: ['192.168.99.100:5601:5601']
-  #   networks: ['stack']
-  #   depends_on: ['elasticsearch']
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${TAG}
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+    ports:
+      - 5601:5601
+    networks: ['stack']
+    depends_on: ['elasticsearch']
 
   # logstash:
   #   image: docker.elastic.co/logstash/logstash:${TAG}
