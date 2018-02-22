@@ -56,6 +56,7 @@ services:
     # Provide a simple pipeline configuration for Logstash with a bind-mounted file.
     volumes:
       - ./config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - /c/Users/james.roller/work/node/aspen-utils/temp:/usr/share/logstash/docs
     networks: ['stack']
     depends_on: ['elasticsearch', 'setup_logstash']
 
